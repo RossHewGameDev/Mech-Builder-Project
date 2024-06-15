@@ -1,21 +1,27 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "Hardpoint.h"
 #include "MFramePart.h"
+#include "Components/StaticMeshComponent.h"
+#include "Hardpoint.h"
 
 // Sets default values
 AMFramePart::AMFramePart()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+	
+	PartRoot = CreateDefaultSubobject<USceneComponent>(TEXT("PartRoot"));
+	RootComponent = PartRoot;
 
+	MeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("MeshComponent"));
+	MeshComponent->SetupAttachment(PartRoot);
 }
 
 // Called when the game starts or when spawned
 void AMFramePart::BeginPlay()
 {
 	Super::BeginPlay();
-	
+	GetHardpoints();
 }
 
 // Called every frame
@@ -27,6 +33,9 @@ void AMFramePart::Tick(float DeltaTime)
 
 TArray<UHardpoint*> AMFramePart::GetHardpoints()
 {
+	// get the components of type UHardpoint
+	GetComponents<UHardpoint>(Hardpoints);
+
 	if (Hardpoints.Num() == 0)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("No hardpoints found on %s"), *GetName());

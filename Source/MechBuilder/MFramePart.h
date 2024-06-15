@@ -31,14 +31,18 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "MFramePartFunctions")
 	AMFramePart* GetAttachedPartByPartID(FString PartID);
 
+	// Manually set Hardpoints in the editor
+	UPROPERTY(EditAnywhere, Category = "MFramePart")
+	TArray<class UHardpoint*> Hardpoints;
+
 private:
+
+	UPROPERTY(EditDefaultsOnly, Category = "MFramePart")
+	USceneComponent* PartRoot;
 
 	UPROPERTY(EditDefaultsOnly, Category = "MFramePart")
 	UStaticMeshComponent* MeshComponent;
 
-	// Manually set Hardpoints in the editor
-	UPROPERTY(EditDefaultsOnly, Category = "MFramePart")
-	TArray<class UHardpoint*> Hardpoints;
-
 	TArray<AMFramePart*> AttachedParts;
+
 };

@@ -1,7 +1,8 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "MFramePart.h"
+
 #include "Hardpoint.h"
+#include "MFramePart.h"
 
 // Sets default values for this component's properties
 UHardpoint::UHardpoint()
