@@ -4,7 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "Components/SceneComponent.h"
-#include "MFramePart.h" // - forward declare this instead of including it here, it's not needed. used temporarily for convenience
 #include "Hardpoint.generated.h"
 
 
@@ -33,12 +32,13 @@ public:
 	void SetConnectedHardpoint(UHardpoint* NewConnectedHardpoint);
 	void ClearConnectedHardpoint();
 
+	class AMFramePart* GetAttachedPart();
+
 private:
 
 	UPROPERTY(VisibleAnywhere, Category = "Hardpoint")
 	bool Empty = true;
 
 	UPROPERTY(VisibleAnywhere, Category = "Hardpoint")
-	// the hardpoint this hardpoint is connected to (if any)
-	UHardpoint* ConnectedHardpoint;
+	UHardpoint* ConnectedHardpoint; // the hardpoint this hardpoint is connected to (if any)
 };

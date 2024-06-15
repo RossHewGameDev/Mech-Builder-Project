@@ -1,6 +1,6 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
+#include "MFramePart.h"
 #include "Hardpoint.h"
 
 // Sets default values for this component's properties
@@ -46,4 +46,18 @@ UHardpoint* UHardpoint::GetConnectedHardpoint()
 void UHardpoint::SetConnectedHardpoint(UHardpoint* NewConnectedHardpoint)
 {
 	ConnectedHardpoint = NewConnectedHardpoint;
+}
+
+void UHardpoint::ClearConnectedHardpoint()
+{
+	ConnectedHardpoint = nullptr;
+}
+
+AMFramePart* UHardpoint::GetAttachedPart()
+{
+	// AMFramePart* AttachedPart = Cast<AMFramePart>(ConnectedHardpoint->GetOwner());
+
+	AMFramePart* AttachedPart = nullptr;
+
+	return AttachedPart;
 }

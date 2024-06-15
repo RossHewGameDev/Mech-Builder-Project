@@ -3,6 +3,8 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Components/SceneComponent.h"
+#include "Hardpoint.h"
 #include "GameFramework/Actor.h"
 #include "MFramePart.generated.h"
 
@@ -23,4 +25,20 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	UFUNCTION(BlueprintCallable, Category = "MFramePartFunctions")
+	TArray<class UHardpoint*> GetHardpoints();
+
+	UFUNCTION(BlueprintCallable, Category = "MFramePartFunctions")
+	AMFramePart* GetAttachedPartByPartID(FString PartID);
+
+private:
+
+	UPROPERTY(EditDefaultsOnly, Category = "MFramePart")
+	UStaticMeshComponent* MeshComponent;
+
+	// Manually set Hardpoints in the editor
+	UPROPERTY(EditDefaultsOnly, Category = "MFramePart")
+	TArray<class UHardpoint*> Hardpoints;
+
+	TArray<AMFramePart*> AttachedParts;
 };
