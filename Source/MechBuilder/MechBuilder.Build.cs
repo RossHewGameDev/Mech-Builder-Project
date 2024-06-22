@@ -19,5 +19,11 @@ public class MechBuilder : ModuleRules
 		// PrivateDependencyModuleNames.Add("OnlineSubsystem");
 
 		// To include OnlineSubsystemSteam, add it to the plugins section in your uproject file with the Enabled attribute set to true
+
+		PublicIncludePaths.AddRange(new string[] {
+			"MechBuilder",
+			"MechBuilder/Public",
+			"MechBuilder/Public/GarageMode"			
+		});
 	}
 }
